@@ -3,6 +3,11 @@
 [![luadoc](https://img.shields.io/badge/luadoc-0.1-blue)](https://norcalli.github.io/luadoc/nvim-colorizer.lua/modules/colorizer.html)
 
 A high-performance color highlighter for Neovim which has **no external dependencies**! Written in performant Luajit.
+> NOTE: `vim.tbl_flatten` was deprecated in neovim versions  > 0.12
+```diff
+- return vim.api.nvim_command(table.concat(vim.tbl_flatten {command, ...}, " "))
++ return vim.api.nvim_command(table.concat(vim.iter({command, ...}):flatten():totable(), " "))
+```
 
 ![Demo.gif](https://raw.githubusercontent.com/norcalli/github-assets/master/nvim-colorizer.lua-demo-short.gif)
 
